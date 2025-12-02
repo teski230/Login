@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Conecta - Atendimento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #D7CCC8;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #926f6396;
+            border-radius: 30px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .help-text {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 4px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #795548;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background:#66493e;
+        }
+
+        .voltar{
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            width: 35%;
+            height: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            
+            /* Centralização */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Pet Conecta</div>
+            <div class="help-text">Precisa de ajuda?</div>
+            <div>Fale com um de nossos atendentes</div>
+        </div>
+
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="nome">NOME</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sobrenome">EMAIL</label>
+                <input type="text" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">TELEFONE</label>
+                <input type="tel" id="telefone" name="telefone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="assunto">ASSUNTO</label>
+                <input type="text" id="assunto" name="assunto">
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">MENSAGEM</label>
+                <input type="text" id="mensagem" name="mensagem" required>
+            </div>
+
+            <button type="submit" class="submit-btn">ENVIAR</button>
+        </form>
+        <br>
+
+        <div>
+            <a href="index.html" >
+                <button class="voltar">inicio</button>
+            </a>
+    
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+        
+            // PEGAR OS CAMPOS CERTOS
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const assunto = document.getElementById('assunto').value;
+            const mensagem = document.getElementById('mensagem').value;
+        
+            // VALIDAÇÃO
+            if (!nome || !email || !telefone || !mensagem) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+        
+            try {
+                const resposta = await fetch("http://localhost:3001/contato", {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        nome,
+                        email,
+                        telefone,
+                        assunto,
+                        mensagem
+                    })
+                });
+        
+                const data = await resposta.json();
+        
+                if (data.success) {
+                    alert("Mensagem enviada com sucesso!");
+                    this.reset();
+                } else {
+                    alert("Erro: " + data.message);
+                }
+            } catch (err) {
+                alert("Erro ao conectar com o servidor.");
+                console.log(err);
+            }
+        });
+        </script>
+        
+</body>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Pet Conecta - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #D7CCC8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background-color: #926f6396;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            font-size: 32px;
+            color: #000000;
+            font-weight: 700;
+            margin-bottom: 5px;
+            
+        }
+        
+        .logo p {
+            color: #000000;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000000;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+       
+        
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 25px;
+        }
+        
+        .forgot-password a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .forgot-password a:hover {
+            color: #357abd;
+            text-decoration: underline;
+        }
+        
+        .continue-btn {
+            background-color: #462a2196;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        
+        
+        .divider {
+            margin: 30px 0;
+            position: relative;
+            text-align: center;
+        }
+        
+        
+        .divider span {
+            background-color: white;
+            padding: 0 15px;
+            color: #666;
+            font-size: 14px;
+        }
+    
+        .signup-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #000000;
+        }
+        
+        .signup-link a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+            
+            .logo h1 {
+                font-size: 28px;
+            }
+        }
+
+        .voltar{
+            background-color: white;
+            color:black;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            width: 35%;
+            height: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h1 style="font-family: 'Verdana';">Pet</h1>
+            <h1>Conecta</h1>
+        </div>
+        
+        <form>
+            <div class="form-group">
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">SENHA</label>
+                <input type="password" id="password" placeholder="Sua senha" required>
+            </div>
+            
+            
+            
+            <button type="submit" class="continue-btn">Continue</button>
+            
+            <br>
+            
+            
+            
+            
+            <div class="signup-link">
+                Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
+            </div>
+        
+            <br>
+            
+            
+        </form>
+        <div>
+            <a href="index.html" >
+                <button class="voltar">inicio</button>
+            </a>
+    
+        </div>
+    </div>
+    
+   
+
+    <script>
+       document.querySelector('form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    // Validação básica
+    if (!email || !password) {
+        alert('Por favor, preencha email e senha');
+        return;
+    }
+    
+    try {
+        console.log('Tentativa de login:', { email, password });
+        
+        // 👇 AQUI ESTÁ A PARTE QUE FALTA - CONEXÃO COM BACKEND
+        const resposta = await fetch("http://localhost:3001/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                senha: password
+            })
+        });
+        
+        const data = await resposta.json();
+        
+        if (data.success) {
+            alert('Login realizado com sucesso!');
+            console.log('Usuário:', data.usuario);
+            // Redirecionar para página principal
+            // window.location.href = 'principal.html';
+        } else {
+            alert('Erro: ' + data.message);
+        }
+        
+    } catch (err) {
+        console.log('Erro:', err);
+        alert('Erro ao conectar com o servidor');
+    }
+});
+</script>
+
+</body>
+</html>

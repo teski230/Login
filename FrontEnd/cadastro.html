@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Conecta - Cadastro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #D7CCC8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .signup-container {
+            background-color: #926f6396;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            margin-bottom: 25px;
+        }
+        
+        .logo h1 {
+            font-size: 32px;
+            color: #000000;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .logo p {
+            color: #000000;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            flex: 1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #f7f7f7;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            border-color: #000000;
+            outline: none;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .checkbox-group label {
+            font-size: 14px;
+            color: #000000;
+            line-height: 1.4;
+        }
+        
+        .checkbox-group a {
+            color: #000000;
+            text-decoration: none;
+        }
+        
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+        
+        .continue-btn {
+            background-color: #462a2196;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        
+        .login-link {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #000000;
+        }
+        
+        .login-link a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .pet-type {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .pet-option {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pet-option:hover {
+            border-color: #000000;
+        }
+        
+        .pet-option.selected {
+            border-color: #000000;
+            background-color: #ebebeb;
+        }
+        
+        .pet-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 30px 20px;
+            }
+            
+            .logo h1 {
+                font-size: 28px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        .voltar{
+            background-color: white;
+            color:black;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            width: 35%;
+            height: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="signup-container">
+        <div class="logo">
+            <h1>Pet</h1>
+            <p>Conecta</p>
+        
+        </div>
+        
+        <form id="signup-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">NOME</label>
+                    <input type="text" id="firstName" placeholder="Seu nome" required>
+                </div>
+                
+                
+            </div>
+            
+            <div class="form-group">
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">TELEFONE</label>
+                <input type="tel" id="phone" placeholder="(11) 99999-9999" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">SENHA</label>
+                <input type="password" id="password" placeholder="Crie uma senha" required>
+            </div>
+            
+            
+            
+            <div class="form-group">
+                <label>TIPO DE PET</label>
+                <div class="pet-type">
+                    <div class="pet-option" data-value="dog">
+                        <div class="pet-icon">🐕</div>
+                        <div>Cachorro</div>
+                    </div>
+                    <div class="pet-option" data-value="cat">
+                        <div class="pet-icon">🐈</div>
+                        <div>Gato</div>
+                    </div>
+                    
+                </div>
+                <input type="hidden" id="petType" required>
+            
+            
+            <button type="submit" class="continue-btn">Criar Conta</button>
+            
+            
+            
+            <div class="login-link">
+                Já tem uma conta? <a href="login.html">Faça login</a>
+            </div>
+
+            
+        </form>
+    </div>
+
+    <div>
+        <a href="index.html" >
+            <button class="voltar">inicio</button>
+        </a>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Seleção do tipo de pet
+            const petOptions = document.querySelectorAll('.pet-option');
+            const petTypeInput = document.getElementById('petType');
+            
+            petOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove a seleção anterior
+                    petOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Adiciona a seleção atual
+                    this.classList.add('selected');
+                    
+                    // Atualiza o valor do campo oculto
+                    petTypeInput.value = this.getAttribute('data-value');
+                });
+            });
+            
+            // Validação e envio do formulário
+            document.getElementById('signup-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // IDs corrigidos!
+                const nome = document.getElementById('firstName').value;
+                const email = document.getElementById('email').value;
+                const telefone = document.getElementById('phone').value;
+                const senha = document.getElementById('password').value;
+                const petType = petTypeInput.value;
+    
+                // Validação
+                if (!nome || !email || !telefone || !senha || !petType) {
+                    alert('Por favor, preencha todos os campos obrigatórios.');
+                    return;
+                }
+                
+                if (senha.length < 6) {
+                    alert('A senha deve ter pelo menos 6 caracteres.');
+                    return;
+                }
+    
+                try {
+                    const resposta = await fetch("http://localhost:3001/cadastro", {
+                        method: "POST",
+                        headers: {
+                            "Accept": "application/json",
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            nome,
+                            email,
+                            telefone,
+                            senha
+                        })
+                    });
+    
+                    const data = await resposta.json();
+    
+                    if (data.success) {
+                        alert("Cadastro realizado com sucesso!");
+                        this.reset();
+                    } else {
+                        alert("Erro: " + data.message);
+                    }
+                } catch (err) {
+                    alert("Erro ao conectar com o servidor.");
+                    console.log(err);
+                }
+    
+            });
+        });
+    </script>
+    
+</body>
+</html>

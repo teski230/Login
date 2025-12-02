@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Conecta</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        body { background-color: #926f6396; color: #333; line-height: 1.6; }
+
+        header {
+            background: #7c584b;
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo { font-size: 2rem; font-weight: 800; }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            transition: .3s;
+        }
+
+        nav a:hover { border-bottom: 2px solid black; }
+
+        .hero { text-align: center; padding: 2rem 0 1rem; }
+
+        .hero h1 { font-size: 2.5rem; margin-bottom: .5rem; }
+
+        main { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+
+        .intro { text-align: center; margin-bottom: 3rem; }
+
+        .intro h2 { font-size: 2.2rem; color: white; margin-bottom: 1rem; position: relative; display: inline-block; }
+
+        .intro h2::after {
+            content: ''; position: absolute; width: 60%; height: 4px; background-color: black;
+            bottom: -10px; left: 20%; border-radius: 2px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            transition: .3s;
+        }
+
+        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12); }
+
+        .card h3 {
+            font-size: 1.8rem;
+            color: black;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid black;
+            padding-bottom: .5rem;
+        }
+
+        footer {
+            background-color: #795548;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-top { flex-direction: column; gap: 1rem; }
+            nav ul { flex-direction: column; gap: 1rem; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="logo">Pet Conecta</div>
+
+        <!-- 🔗 LINKS ATUALIZADOS -->
+        <nav>
+            <ul>
+                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="Ajuda.html">Fale Conosco</a></li>
+            </ul>
+        </nav>
+        <!-- 🔗 FIM DOS LINKS -->
+    </div>
+
+    <div class="hero">
+        <h1>Pet Conecta</h1>
+    </div>
+</header>
+
+<main>
+    <section class="intro">
+        <h2>O que temos a oferecer?</h2>
+    </section>
+
+    <section id="produtos" class="products">
+        <article class="card">
+            <h3>Rações</h3>
+            <p>Grande variedade de marcas e tipos de rações.</p>
+        </article>
+
+        <article class="card">
+            <h3>Banho e Tosa</h3>
+            <p>Equipe especializada garantindo o melhor cuidado ao seu pet.</p>
+        </article>
+
+        <article class="card">
+            <h3>Brinquedos</h3>
+            <p>Brinquedos interativos e educativos para seu pet.</p>
+        </article>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-logo">Pet Conecta</div>
+    <p>Rua dos Animais, 123 - Centro, Petrópolis - RJ</p>
+    <p>Telefone: (24) 3333-4444 | WhatsApp: (24) 99999-8888</p>
+    <p>© 2023 Pet Conecta. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
